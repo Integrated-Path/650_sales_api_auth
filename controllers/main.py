@@ -5,18 +5,18 @@ from odoo.addons.base_rest.controllers import main
 
 
 class BaseRestDemoPublicApiController(main.RestController):
-    _root_path = "/wolf_gym_api/public/"
+    _root_path = "/650_sales_api/public/"
     _collection_name = "base.rest.demo.public.services"
     _default_auth = "public"
 
 
 class BaseRestDemoPrivateApiController(main.RestController):
-    _root_path = "/wolf_gym_api/private/"
+    _root_path = "/650_sales_api/private/"
     _collection_name = "base.rest.demo.private.services"
     _default_auth = "user"
 
 
 class BaseRestDemoNewApiController(main.RestController):
-    _root_path = "/wolf_gym_api/"
+    _root_path = "/650_sales_api/"
     _collection_name = "base.rest.demo.records.services"
     _default_auth = "public"

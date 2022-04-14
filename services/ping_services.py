@@ -6,8 +6,8 @@ from odoo.addons.component.core import Component
 
 class PingService(Component):
     _inherit = "base.rest.service"
-    _name = "wolf_gym.service"
-    _usage = "wolf_gym"
+    _name = "650_sales_api.service"
+    _usage = "650_sales_api"
     _collection = "base.rest.demo.records.services"
     _description = """
         Ping Services
