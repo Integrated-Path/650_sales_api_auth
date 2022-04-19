@@ -23,8 +23,9 @@ class SessionAuthenticationService(Component):
     _inherit = "base.rest.service"
     _name = "session.authenticate.service"
     _usage = "auth"
-    _collection = "wolfgym.session.rest.services"
+    _collection = "session.rest.auth.services"
 
+    
     @restapi.method([(["/login"], "POST")], auth="public")
     def authenticate(self):
         params = request.params
