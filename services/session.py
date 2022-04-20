@@ -1,14 +1,10 @@
 import datetime
 
 from odoo import fields
-from odoo.http import request, root
+from odoo.http import db_monodb, request, root
 from odoo.service import security
 from odoo.addons.base_rest import restapi
 from odoo.addons.component.core import Component
-try:
-    from ._secret import DB_NAME
-except ImportError:
-    raise ImportError("Please add `_secrect.py` file to `rest_api_auth` that includes the `DB_NAME` variable")
 
 def _rotate_session(httprequest):
     if httprequest.session.rotate:
@@ -31,7 +27,8 @@ class SessionAuthenticationService(Component):
     @restapi.method([(["/login"], "POST")], auth="public")
     def authenticate(self):
         params = request.params
-        request.session.authenticate(DB_NAME, params["user_name"], params["password"])
+        db_name = params.get("db", db_monodb())
+        request.session.authenticate(db_name, params["user_name"], params["password"])
         result = request.env["ir.http"].session_info()
         # avoid to rotate the session outside of the scope of this method
         # to ensure that the session ID does not change after this method
